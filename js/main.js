@@ -9,7 +9,7 @@ const randYear = (min, max) => {
 
 const randWeather = () => {
     let weather = {
-        1: `Sunny`,
+        1: `Chilly`,
         2: `Rainy`,
         3: `Foggy`,
         4: `Snowy`,
@@ -18,6 +18,7 @@ const randWeather = () => {
         7: `Stormy`,
         8: `Chilly`,
         9: `Blazing hot`,
+        10: `Warm`,
     };
 
     let i = Math.ceil(Math.random() * Object.keys(weather).length);
