@@ -10,18 +10,17 @@ const randYear = (min, max) => {
 const randWeather = () => {
     let weather = {
         1: `Sunny`,
-        2: `Raining`,
+        2: `Rainy`,
         3: `Foggy`,
-        4: `Snowing`,
+        4: `Snowy`,
         5: `Cloudy`,
-        6: `Hailing`,
-        7: `Windy`,
-        8: `Stormy`,
-        9: `Chilly`,
-        10: "Blazing hot",
+        6: `Windy`,
+        7: `Stormy`,
+        8: `Chilly`,
+        9: `Blazing hot`,
     };
 
-    let i = Math.floor(Math.random() * Object.keys(weather).length);
+    let i = Math.ceil(Math.random() * Object.keys(weather).length);
 
     return weather[i]; // => string
 };
@@ -84,14 +83,22 @@ const getSeason = (month) => {
     return season; // => string
 };
 
-const dateFormat = (locale) => {
-    let format = {
-        us: `${month} ${day}, ${year}`,
-        eu: `${day} ${month} ${year}`,
+const randPartOfDay = () => {
+    let partOfDay = {
+        1: `morning`,
+        2: `afternoon`,
+        3: `evening`,
+        4: `night`,
     };
 
-    return format[locale]; // => string
+    let i = Math.ceil(Math.random() * Object.keys(partOfDay).length);
+
+    return partOfDay[i]; // => string
 };
+
+/* 
+    UNUSED STUFF
+*/
 
 const dateSuffix = (bool = false) => {
     if (bool === true) {
@@ -100,6 +107,7 @@ const dateSuffix = (bool = false) => {
         }
     }
 };
+
 const yearRange = (range) => {};
 
 /*
@@ -150,11 +158,26 @@ const getYear = (yearSet) => {
 };
 */
 
-let year = randYear(1600, 2021);
-let month = randMonth();
-let day = randDayNumber();
-let season = getSeason(month).toLowerCase();
-let weather = randWeather().toLowerCase();
-let format = dateFormat(`us`);
+const randMessage = () => {
+    let year = randYear(1600, 2021); // Dont enter negative numbers here
+    let month = randMonth();
+    let day = randDayNumber();
+    let dayPart = randPartOfDay();
+    let season = getSeason(month).toLowerCase();
+    let weather = randWeather().toLowerCase();
 
-console.log(`It was a ${weather} ${season} day on ${format}.`);
+    const dateFormat = (locale) => {
+        let format = {
+            us: `${month} ${day}, ${year}`,
+            eu: `${day} ${month} ${year}`,
+        };
+
+        return format[locale]; // => string
+    };
+
+    let format = dateFormat(`us`);
+
+    return `It was a ${weather} ${season} ${dayPart} on ${format}.`;
+};
+
+console.log(randMessage());
