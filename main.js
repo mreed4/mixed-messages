@@ -86,13 +86,20 @@ const getSeason = (month) => {
 
 const dateFormat = (locale) => {
     let format = {
-        us: `${month} ${day} ${year}`,
-        eu: `${day} ${month}, ${year}`,
+        us: `${month} ${day}, ${year}`,
+        eu: `${day} ${month} ${year}`,
     };
 
     return format[locale]; // => string
 };
 
+const dateSuffix = (bool = false) => {
+    if (bool === true) {
+        let suffix;
+        switch (suffix) {
+        }
+    }
+};
 const yearRange = (range) => {};
 
 /*
