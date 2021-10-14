@@ -48,7 +48,7 @@ const randMonth = () => {
 };
 
 const randDayNumber = (month) => {
-    let dayNumber = Math.ceil(Math.random() * 30);
+    let dayNumber = Math.ceil(Math.random() * 31);
 
     return dayNumber; // => number
 };
@@ -97,11 +97,8 @@ const randPartOfDay = () => {
     return partOfDay[i]; // => string
 };
 
-/* 
-    UNUSED STUFF
-*/
-
 const dateSuffix = (date, bool = false) => {
+    // https://tinyurl.com/date-suffix
     if (bool === true) {
         let suffix = {
             1: `st`,
@@ -112,11 +109,15 @@ const dateSuffix = (date, bool = false) => {
             23: `rd`,
             31: `st`,
         };
-        return suffix[date] || `th`;
+        return suffix[date] || `th`; // => string
     } else {
-        return ``;
+        return ``; // => string (empty)
     }
 };
+
+/* 
+    UNUSED STUFF
+*/
 
 const yearRange = (range) => {};
 
@@ -169,10 +170,10 @@ const getYear = (yearSet) => {
 */
 
 const randMessage = () => {
-    let year = randYear(1600, 2021); // Dont enter negative numbers here
+    let year = randYear(1800, 2021); // Dont enter negative numbers here
     let month = randMonth();
     let day = randDayNumber();
-    let suffix = dateSuffix(day, true);
+    let suffix = dateSuffix(day);
 
     let dayPart = randPartOfDay();
     let season = getSeason(month).toLowerCase();
@@ -187,9 +188,9 @@ const randMessage = () => {
         return format[locale]; // => string
     };
 
-    let formattedDate = dateFormat(`us`);
+    let date = dateFormat(`eu`);
 
-    return `It was a ${weather} ${season} ${dayPart} on ${formattedDate}.`;
+    return `It was a ${weather} ${season} ${dayPart} on ${date}.`;
 };
 
 let message = randMessage();
