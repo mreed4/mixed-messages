@@ -9,17 +9,41 @@ const randYear = (min, max) => {
     return year;
 };
 
-const yearSet = (set) => {
+const randWeather = () => {
+    let weather = {
+        1: `Sunny`,
+        2: `Raining`,
+        3: `Foggy`,
+        4: `Snowing`,
+        5: `Cloudy`,
+    };
+
+    let i = Math.ceil(Math.random() * Object.keys(weather).length);
+
+    return weather[i]; // => string
+};
+
+const randDayNumber = () => {
+    let dayNumber = Math.ceil(Math.random() * 30);
+
+    return dayNumber; // => number
+};
+
+const generateYearSet = (amount) => {
     let antiquityYear = -3000;
     let currentYear = new Date().getFullYear();
 
     let years = [];
-    let n = 1;
-    while (n <= set) {
+    let i = 1;
+    while (i <= amount) {
         years.push(randYear(antiquityYear, currentYear));
-        n++;
+        i++;
     }
 
+    return years; // => array of numbers
+};
+
+const exiguusYears = (years) => {
     let exiguus = years.map((year) => {
         if (year < 0) {
             return `${-year} B.C.`;
@@ -29,22 +53,11 @@ const yearSet = (set) => {
     });
 
     // console.log(exiguus);
-    return exiguus;
+    return exiguus; // => array of strings
 };
 
-const quoteYear = (years) => {
-    let i = Math.round(Math.random() * years.length);
+const getYear = (yearSet) => {
+    let i = Math.round(Math.random() * yearSet.length);
 
-    return years[i];
+    return yearSet[i]; // => string
 };
-
-let set30 = yearSet(30);
-
-let year = quoteYear(set30);
-
-console.log(year);
-
-const quoteSet = (set) => {};
-
-const generateFakeQuote = () => {};
-// yearSet(set);
