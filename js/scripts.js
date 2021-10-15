@@ -17,8 +17,7 @@ const randWeather = () => {
         6: `Windy`,
         7: `Stormy`,
         8: `Chilly`,
-        9: `Blazing hot`,
-        10: `Warm`,
+        9: `Warm`,
     };
 
     let i = Math.ceil(Math.random() * Object.keys(weather).length);
@@ -173,7 +172,7 @@ const randMessage = () => {
     let year = randYear(1800, 2021); // Dont enter negative numbers here
     let month = randMonth();
     let day = randDayNumber();
-    let suffix = dateSuffix(day);
+    let suffix = dateSuffix(day, true);
 
     let dayPart = randPartOfDay();
     let season = getSeason(month).toLowerCase();
@@ -195,7 +194,7 @@ const randMessage = () => {
 
 let message = randMessage();
 
-console.log(message);
+document.getElementById(`main`).textContent = message;
 
 /*
 let arr = [];
