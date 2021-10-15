@@ -142,6 +142,6 @@ let message = randMessage();
 
 document.getElementById(`main`).textContent = message;
 
-console.log(message);
+// console.log(message);
 
 // return message;
