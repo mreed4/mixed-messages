@@ -114,60 +114,6 @@ const dateSuffix = (date, bool = false) => {
     }
 };
 
-/* 
-    UNUSED STUFF
-*/
-
-const yearRange = (range) => {};
-
-/*
-const generateYearSet = (amount) => {
-    let antiquityYear = -3000;
-    let currentYear = new Date().getFullYear();
-
-    let years = [];
-    let i = 1;
-    while (i <= amount) {
-        years.push(randYear(antiquityYear, currentYear));
-        i++;
-    }
-
-    return years; // => array of numbers
-};
-
-const exiguusYears = (years) => {
-    let exiguus = years.map((year) => {
-        if (year < 0) {
-            return `${-year} B.C.`;
-        } else {
-            return `${year} A.D.`;
-        }
-    });
-
-    // console.log(exiguus);
-    return exiguus; // => array of strings
-};
-
-const secularYears = (years) => {
-    let secular = years.map((year) => {
-        if (year < 0) {
-            return `${-year} B.C.E.`;
-        } else {
-            return `${year} C.E.`;
-        }
-    });
-
-    // console.log(exiguus);
-    return secular; // => array of strings
-};
-
-const getYear = (yearSet) => {
-    let i = Math.round(Math.random() * yearSet.length);
-
-    return yearSet[i]; // => string
-};
-*/
-
 const randMessage = () => {
     let year = randYear(1800, 2021); // Dont enter negative numbers here
     let month = randMonth();
@@ -196,13 +142,6 @@ let message = randMessage();
 
 document.getElementById(`main`).textContent = message;
 
-/*
-let arr = [];
-let i = 1;
-while (i <= 30) {
-    arr.push(randMessage());
-    i++;
-}
+console.log(message);
 
-console.log(arr);
-*/
+return message;
