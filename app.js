@@ -84,7 +84,7 @@ function getDateSuffix(dayNumber) {
 
 function getRandomMessage(region) {
   let year = getRandomYear(1800, 2021);
-  let month = months[Math.floor(Math.random() * months.length)];
+  let month = getRandomMonth();
   let dayNumber = getRandomDayNumber();
   let suffix = getDateSuffix(dayNumber);
   let dayPart = getRandomPartOfDay();
