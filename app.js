@@ -3,9 +3,11 @@ const main = document.getElementById("main");
 const weather = ["Chilly", "Rainy", "Foggy", "Snowy", "Cloudy", "Windy", "Stormy", "Warm"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const partsOfDay = ["morning", "afternoon", "evening", "night"];
+const regions = ["us", "eu"];
 
 (function init() {
-  getRandomMessage();
+  const randomRegion = regions[Math.floor(Math.random() * regions.length)];
+  getRandomMessage(randomRegion);
   document.addEventListener("keyup", getNewMessage, false);
 })();
 
@@ -16,11 +18,14 @@ function getNewMessage(event) {
   if (event.code === "Space") {
     /* */
     // https://css-tricks.com/restart-css-animation/#aa-update-another-javascript-method-to-restart-a-css-animation
+
     main.classList.remove("animate");
     void main.offsetWidth; // => trigger reflow
     main.classList.add("animate");
 
-    getRandomMessage();
+    const randomRegion = regions[Math.floor(Math.random() * regions.length)];
+
+    getRandomMessage(randomRegion);
   }
 }
 
@@ -77,26 +82,25 @@ function getDateSuffix(dayNumber) {
   );
 }
 
-function getRandomMessage() {
+function getRandomMessage(region) {
   let year = getRandomYear(1800, 2021);
   let month = months[Math.floor(Math.random() * months.length)];
   let dayNumber = getRandomDayNumber();
   let suffix = getDateSuffix(dayNumber);
-
   let dayPart = getRandomPartOfDay();
   let season = getSeason(month).toLowerCase();
   let weather = getRandomWeather().toLowerCase();
 
-  const dateFormat = (locale) => {
+  function dateFormat(locale) {
     let format = {
       us: `${month} ${dayNumber}${suffix}, ${year}`,
       eu: `${dayNumber} ${month} ${year}`,
     };
 
     return format[locale];
-  };
+  }
 
-  let date = dateFormat("eu");
+  let date = dateFormat(region);
 
   main.textContent = `It was a ${weather} ${season} ${dayPart} on ${date}.`;
 }
