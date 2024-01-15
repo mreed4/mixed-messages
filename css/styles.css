@@ -1,31 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@0;1&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-color: hsl(225, 20.9%, 26.3%);
-    user-select: none;
+  background-color: hsl(225, 20.9%, 26.3%);
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 #main {
-    margin: 0 auto;
-    width: 60%;
-    font-family: "IM Fell Great Primer", serif;
-    font-size: 6em;
-    color: hsl(225, 20.9%, 33%);
-    position: absolute;
-    left: 50%;
-    top: 45%;
-    transform: translate(-50%, -45%);
-
-    animation: fadeInAnimation ease 600ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  margin: 0 auto;
+  width: 60%;
+  font-family: "IM Fell Great Primer", serif;
+  font-size: 6em;
+  color: hsl(225, 20.9%, 33%);
 }
 
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.animate {
+  animation-name: fade-in;
+  animation-duration: 450ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
